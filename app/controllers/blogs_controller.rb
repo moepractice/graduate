@@ -1,11 +1,11 @@
 class BlogsController < ApplicationController
   before_action :require_login
+  before_action :user_logged_in?, only: [:new, :edit, :show, :index]
   before_action :set_blog, only: [:show, :edit, :update, :destroy]
   
   def index
     @blogs = Blog.all
     @blog = Blog.new
-    @user = current_user
   end
   
   def new
@@ -27,9 +27,10 @@ class BlogsController < ApplicationController
   end
   
   def show
+    @blogs = Blog.all
     @favorite = current_user.favorites.find_by(blog_id: @blog.id)
-    @comments = @blog.comments.includes(:user).all
-    @comment  = @blog.comments.build(user_id: current_user.id) if current_user
+    @comment = @blog.comments.build
+    @comments = @blog.comments
   end
   
   def edit
@@ -50,6 +51,7 @@ class BlogsController < ApplicationController
   
   def confirm
     @blog = Blog.new(blog_params)
+    @blog.user_id = current_user.id
     render :new if @blog.invalid?
   end
   
@@ -60,6 +62,15 @@ class BlogsController < ApplicationController
     end
   end
   
+  def comment
+    @blog = Blog.find(params[:id])
+    @comment = Comment.new(comment_params.merge(post_id: @blog.id))
+    @comment.save!
+    redirect_to action: :show
+  rescue
+    render action: :show
+  end
+
   private
   def blog_params
     params.require(:blog).permit(:title, :content,:user_id)
@@ -68,4 +79,9 @@ class BlogsController < ApplicationController
   def set_blog
     @blog = Blog.find(params[:id])
   end
+  
+  def comment_params
+    params.require(:comment).permit(:content)
+  end
+
 end

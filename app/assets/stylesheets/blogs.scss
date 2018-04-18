@@ -1,3 +1,25 @@
-// Place all the styles related to the blogs controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+.main-header{
+    padding-bottom: 63%;
+    width: 100%;
+    background-size: cover;
+    background-image: url(/assets/main.png);
+    background-attachment: fixed;
+}
+
+.main-header img {
+    display: block;
+    margin: 0 auto;
+    width: 25%;
+    padding-top: 15%;
+}
+
+footer {
+  width: 100%;
+  background-color:#555;
+  color: white;
+  margin: auto;
+  font-size: 12px;
+  line-height:10px;
+  bottom: 0;
+  position: absolute;
+}

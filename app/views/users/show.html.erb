@@ -6,10 +6,13 @@
 
 <h3>内容</h3>
 
-<% @favorites.each do |favorite| %>
-    <% favorite.user.id == current_user.id %>
-    <p><%= favorite.content %></p>
+<% if @favorites.present? %>
+  <% @favorites.each do |favorite| %>
+    <p><%= favorite.blog.title %></p>
+    <p><%= favorite.blog.content %></p>
+  <% end %>
 <% end %>
 
 <%= link_to 'ブログ一覧画面にもどる', blogs_path %>
+<br>
 <%= link_to '新しくブログを投稿する', new_blog_path %>

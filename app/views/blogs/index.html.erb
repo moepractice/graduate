@@ -1,32 +1,39 @@
-<h1>社会人日記帳</h1>
 
-<p><%= notice %></p>
 
-<table>
-  <tr>
-    <th>タイトル</th>
-    <th>内容</th></th>
-  </tr>
+<header class="header">社会人日記帳</header>
+  <p><%= notice %></p>
 
-<% @blogs.each do |blog| %>
-  <tr>
-    <td><%= blog.title %></td>
-    <td><%= blog.content %></td>
-    <td><%= link_to '詳細を見る', blog_path(blog.id) %></td>
-    <td><%= link_to "修正・追記する", edit_blog_path(blog.id) %></td>
-    <td><%= link_to '削除する', blog_path(blog.id), method: :delete, data: { confirm: '本当に削除していいですか？' } %></td>
-    <% if blog.user_id != current_user.id %>
+  <div class ="content cleafix">
+  <section class="main-header">
+  </section>
+
+  <%= link_to '新しくブログを投稿する', new_blog_path %>
+<br>
+<br>
+<div class="container">
+  <% @blogs.each do |blog| %>
+  <div class="PhotoBox" class="col-sm-6 col-md-3">
+  <div class="col-sm-6 col-md-4">
+    <div class="thumbnail">
+      <div class="caption">
+        <p>タイトル：<br><%= blog.title %></p>
+        <p>今日のつぶやき：<br><%= blog.content %></p>
+
+  <% unless blog.user_id != current_user.id %>
+    <td><%= link_to 'Show', blog_path(blog.id) %></td>
+    <td><%= link_to "Edit", edit_blog_path(blog.id) %></td>
+    <td><%= link_to 'Delete', blog_path(blog.id), method: :delete, data: { confirm: '本当に削除していいですか？' } %></td>
+  <% else %>
+    <td><%= link_to 'Show', blog_path(blog.id) %></td>
       <% if @favorite.present? %>
-        <td><%= link_to 'Unlike', favorite_path(blog_id: blog.id), method: :delete %></td>
+        <td><%= link_to 'Unliked', favorite_path(blog_id: blog.id), method: :delete %></td>
       <% else %>
-        <td><%= link_to '♡', favorites_path(blog_id: blog.id), method: :post %></td>
+        <td><%= link_to 'わかる', favorites_path(blog_id: blog.id), method: :post %></td>
       <% end %>
-    <% end %>
-    <% if blog.user_id != current_user.id %>
-      <td><%= link_to 'コメントする', comment_path(blog.id) %></td>
-    <% end %>
-<% end %>
-</table>
+  <% end %>
 
-<%= link_to 'ブログ一覧画面にもどる', blogs_path %>
-<%= link_to '新しくブログを投稿する', new_blog_path %>
+</div>
+</div>
+</div>
+</div>
+<% end %>

@@ -2,34 +2,26 @@
 <p>タイトル: <%= @blog.title %></p>
 <p>内容: <%= @blog.content %></p>
 
+<h2>コメントを追加</h2>
+<%= form_for( [@blog, @blog.comments.build] ) do |f| %>
+
+  <div class="comment_title">
+    <%= f.text_field :content %>
+  </div>
+    <%= f.submit %>
+<% end %>
+
 <p><%= notice %></p>
-  <% if @blog.user_id = current_user.id %>
+  <% if @blog.user_id == current_user.id %>
     <%= link_to 'Edit', edit_blog_path(@blog)%>
-      <% if @favorite.present? %>
-        <%= link_to 'Unliked', favorite_path(blog_id: @blog.id), method: :delete, class: 'btn btn-primary' %>
-      <% else %>
-        <%= link_to 'Like♡', favorites_path(blog_id: @blog.id), method: :post, class: 'btn btn-danger' %>
-      <% end %>
+    <%= link_to 'Delete', blog_path(@blog), method: :delete, data: { confirm: '本当に削除していいですか？' } %>
+  　<%= link_to 'Comment', new_blog_comment_path(@blog) %>
+  <% else %>
+    <% if @favorite.present? %>
+      <%= link_to 'Unliked', favorite_path(blog_id: @blog.id), method: :delete %>
+    <% else %>
+      <%= link_to 'わかる', favorites_path(blog_id: @blog.id), method: :post %>
+    <% end %>
   <% end %>
-  
-  <% if @blog.user_id = current_user.id %>
-    <%= link_to 'Comment', comment_path(blog_id: @blog.id), method: :delete, class: 'btn btn-primary' %>
-  <% end %>
-
+<br>
 <%= link_to 'ブログ一覧画面にもどる', blogs_path %>
-
-<div>
-  <% @comments.each do |comment| %>
-    <div>
-      <strong><%= comment.user.user_name %></strong>
-      <br />
-      <p><%= comment.body %></p>
-      <% if user_signed_in? && comment.user == current_user %>
-        <p><%= link_to 'Delete', comment_path(comment), method: :delete %></p>
-      <% end %>
-    </div>
-  <% end %>
-  <% if user_signed_in? %>
-    <%= render 'comments/form' %>
-  <% end %>
-</div>

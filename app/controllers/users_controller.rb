@@ -13,8 +13,8 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find(params[:id])
-    @favorites = @user.favorites.find_by(blog_id: params[:blog_id])
+    @user = User.find_by_id(params[:id])
+    @favorites = @user.favorites
     @comments = @user.comments.find_by(blog_id: params[:blog_id])
   end
   

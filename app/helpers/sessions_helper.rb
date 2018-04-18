@@ -6,4 +6,12 @@ module SessionsHelper
   def logged_in?
     !current_user.nil?
   end
+  
+  def user_logged_in?
+    if logged_in? == true
+      return
+    else
+      redirect_to new_session_path
+    end
+  end
 end

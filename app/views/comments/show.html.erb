@@ -15,5 +15,17 @@
   <%= @comment.body %>
 </p>
 
+<p>
+<strong>作成時間:</strong>
+<%= @blog.created_at.strftime("%y/%m/%d %p %l:%M") %>
+</p>
+
+<p>コメント一覧</p>
+<div id="comments_area">
+  <%= render partial: 'comments/index', locals: { comments: @comments, blog: @blog } %>
+</div>
+    <%= render partial: 'comments/form', locals: { comment: @comment, blog: @blog } %>
+    <%= link_to '戻る', blogs_path %>
+    
 <%= link_to 'Edit', edit_comment_path(@comment) %> |
 <%= link_to 'Back', comments_path %>
