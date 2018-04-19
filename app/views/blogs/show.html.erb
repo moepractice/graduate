@@ -1,6 +1,16 @@
 <h1>ブログ詳細画面</h1>
 <p>タイトル: <%= @blog.title %></p>
 <p>内容: <%= @blog.content %></p>
+<p><%= @blog.created_at %></p>
+
+<h1>コメント一覧</h1>
+<% @comments.each do |comment| %>
+  <p>
+    <%= comment.content %>
+  <br>
+    <%= comment.created_at %>
+  </p>
+<% end %>
 
 <h2>コメントを追加</h2>
 <%= form_for( [@blog, @blog.comments.build] ) do |f| %>

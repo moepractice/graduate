@@ -31,22 +31,22 @@
       <ul class="nav navbar-nav">
         <% if logged_in? %>
           <li><%= link_to "マイページ", user_path(current_user.id) %></li>
-      　   <li><%= link_to "ログアウト", session_path(current_user.id), method: :delete %></li>
+          <li><%= link_to "お問い合わせ", new_contact_path(current_user.id) %></li>
+          <li><%= link_to '新規投稿する', new_blog_path %></li>
+          <li><%= link_to "ログアウト", session_path(current_user.id), method: :delete %></li>
         <% else %>
           <li><%= link_to "新規登録", new_user_path %></li>
           <li><%= link_to "ログインする", new_session_path %></li>
         <% end %>
-        <li><%= link_to '新規投稿する', new_blog_path %></li>
       </ul>
     </div>
   </div>
 </nav>
 </header>
     <%= yield %>
-    
-    <footer>
-      <p>© 2017-2018 Copyright Moechata</p>
-  　</footer>
+  <footer>
+    <p>© 2017-2018 Copyright Moechanta</p>
+  </footer>
   </body>
 </html>
 

@@ -7,21 +7,19 @@ class CommentsController < ApplicationController
   end
   
   def create
-    @comment = Comment.new(comment_params)
-    @comment = current_user.comments.build(comment_params)
-    @blog = @comment.blog
-    respond_to do |format|
-      if @comment.save
-         redirect_to blog_path(@blog)
-      else
-        render  'new' 
-      end
+    @blog = Blog.find(params[:blog_id])
+    @comment = @blog.comments.new(comment_params)
+    @comment.user_id = current_user.id
+    if @comment.save
+      redirect_to @blog, notice: "コメントしました"
+    else
+      redirect_to @blog, notice: "コメント出来ませんでした。"
     end
   end
   
   def new
     if params[:back]
-      @comment = Comment.new(blog_params)
+      @comment = Comment.new(comment_params)
     else
       @comment = Comment.new
     end
@@ -48,6 +46,7 @@ class CommentsController < ApplicationController
     @comment.destroy
     render 'index'
   end
+  
   private
     def comment_params
       params.require(:comment).permit(:blog_id, :content)
