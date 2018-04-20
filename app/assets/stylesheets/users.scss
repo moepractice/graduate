@@ -1,3 +1,116 @@
-// Place all the styles related to the users controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+label {
+    max-width: 100%;
+    margin: 5px;
+    font-weight: 700;
+    font: bold;
+}
+
+.login{
+    color:white;
+}
+
+input {
+    margin: 3px;
+}
+
+p.sign-up{
+    text-align: left;
+    margin-top: 50px;
+    margin-left: 50px;
+    color: white;
+    font: bold;
+    font-size: 30px;
+}
+
+p.announce{
+    text-align: left;
+    margin: 0 50px 0 50px;
+    color: white;
+    font: bold;
+    font-size: 20px;
+    background-color:rgba(255,0,0,0.5);
+    margin-top: 10px;
+}
+
+body.login {
+  /* 画像ファイルの指定 */
+  background-image: url(te.jpg);
+   
+  /* 画像を常に天地左右の中央に配置 */
+  background-position: center center;
+   
+  /* 画像をタイル状に繰り返し表示しない */
+  background-repeat: no-repeat;
+   
+  /* コンテンツの高さが画像の高さより大きい時、動かないように固定 */
+  background-attachment: fixed;
+   
+  /* 表示するコンテナの大きさに基づいて、背景画像を調整 */
+  background-size: cover;
+   
+  /* 背景画像が読み込まれる前に表示される背景のカラー */
+  background-color: #464646;
+}
+
+img.mypage{
+    width : 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+p.mypage{
+    text-align: left;
+    margin-left: 100px;
+    margin-bottom:10px;
+    width: 50%;
+}
+
+
+div.favorite_user{
+    font-size: 20px;
+    text-align:left;
+    margin-left:30px;
+}
+
+.column {
+    width: 100%;
+    text-align: center;
+/*    display: flex; */
+    align-items: flex-end;
+    justify-content: center;
+    margin-bottom: 300px;
+    margin-top: 50px;
+}
+    
+    h2 {
+        font-size: 3rem;
+    }
+    p {
+        font-size: 1.5rem;
+    }
+    a:hover {
+        background: #0090aa;
+    }
+
+@media all and (min-width: 500px) {
+  .wrapper {
+    display: flex;
+  }
+}
+
+.box11{
+    padding: 0.5em 1em;
+    margin: 2em 0;
+    color: #5d627b;
+    background: white;
+    border-top: solid 5px #5d627b;
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.22);
+}
+.box11 p {
+    margin: 0; 
+    padding: 0;
+}
+
+input#feed_image{
+    background-color: white;
+}

@@ -1,4 +1,8 @@
-<h1>Sign up</h1>
+<body class ="login">
+<p class = "sign-up">新規登録</p>
+
+<p class = "announce">自社では話しにくいけど、誰かに話したい、共感して欲しい…</p>
+<p class = "announce">そんな「つぶやきを吐き出してみませんか？</p>
 
 <%= form_with(model: @user, local: true) do |f| %>  
 
@@ -12,18 +16,27 @@
     </ul>
   </div>
 <% end %>
-
+<div class ="login">
   <%= f.label :name %>
   <%= f.text_field :name %>
 
   <%= f.label :email %>
   <%= f.email_field :email %>
+  <br>
+  <div class="field">
+ 　　 <%= f.label :image %>
+ 　　 <%= f.file_field :image, id: :feed_image %>
+ 　　 <%= f.hidden_field :image_cache %>
+  </div>
 
   <%= f.label :password %>
   <%= f.password_field :password %>
 
   <%= f.label :password_confirmation %>
   <%= f.password_field :password_confirmation %>
-
-  <%= f.submit "Create my account" %>
+<br>
+</div>
+  <%= f.submit "登録する" %>
 <% end %>
+
+<body>

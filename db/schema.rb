@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 20180419031119) do
     t.text "title"
     t.text "content"
     t.integer "user_id"
+    t.text "image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -59,6 +60,7 @@ ActiveRecord::Schema.define(version: 20180419031119) do
     t.string "email"
     t.string "password_digest"
     t.bigint "user_id"
+    t.string "image"
     t.integer "blog_id"
     t.index ["user_id"], name: "index_users_on_user_id"
   end

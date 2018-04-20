@@ -1,37 +1,57 @@
-<h1>ブログ詳細画面</h1>
-<p>タイトル: <%= @blog.title %></p>
-<p>内容: <%= @blog.content %></p>
-<p><%= @blog.created_at %></p>
-
-<h1>コメント一覧</h1>
-<% @comments.each do |comment| %>
-  <p>
-    <%= comment.content %>
-  <br>
-    <%= comment.created_at %>
-  </p>
-<% end %>
-
-<h2>コメントを追加</h2>
-<%= form_for( [@blog, @blog.comments.build] ) do |f| %>
-
-  <div class="comment_title">
-    <%= f.text_field :content %>
+<h3><img src="/assets/blog.jpg" >詳細内容</h3>
+<%= link_to 'ブログ一覧画面へ', blogs_path %>
+<div class="wrapper">
+  <div class="column">
+    <div class="info" id="user">
+      <div class ="mypage">
+      <p class ="mypage">ユーザー: <%= @blog.user.name %><br>
+      タイトル: <%= @blog.title %><br>
+      内容: <%= @blog.content %><br>
+      <%= @blog.created_at %></p>
+      </div>
+    </div>
   </div>
-    <%= f.submit %>
-<% end %>
+
+<div class="column">
+    <div class="info">
+      <h3 class ="mypage">
+        <h1>コメント一覧</h1>
+          <% @comments.each do |comment| %>
+            <p><%= comment.content %><br>
+               <%= comment.created_at %></p>
+          <% end %>
+        <h2>コメントを追加</h2>
+          <%= form_for( [@blog, @blog.comments.build] ) do |f| %>
+            <div class="comment_title">
+              <%= f.text_area :content %>
+            </div>
+            <%= f.submit %>
+          <% end %>
+    </div>
+  </div>
+</div>
 
 <p><%= notice %></p>
   <% if @blog.user_id == current_user.id %>
-    <%= link_to 'Edit', edit_blog_path(@blog)%>
-    <%= link_to 'Delete', blog_path(@blog), method: :delete, data: { confirm: '本当に削除していいですか？' } %>
-  　<%= link_to 'Comment', new_blog_comment_path(@blog) %>
+    <%= link_to edit_blog_path(@blog) ,target: "_blank" do  %>
+    <%= image_tag "edit.png" %>
+    <% end %>
+    <%= link_to blog_path(@blog), method: :delete, data: { confirm: '本当に削除していいですか？' }, target: "_blank" do  %>
+    <%= image_tag "delete.png" %>
+    <% end %>
+    <%= link_to new_blog_comment_path(@blog), target: "_blank" do  %>
+    <%= image_tag "comment.png" %>
+    <% end %>
   <% else %>
     <% if @favorite.present? %>
-      <%= link_to 'Unliked', favorite_path(blog_id: @blog.id), method: :delete %>
+      <%= link_to favorite_path(blog_id: @blog.id), method: :delete, target: "_blank" do  %>
+      <%= image_tag "unlike.png" %><% end %>
     <% else %>
-      <%= link_to 'わかる', favorites_path(blog_id: @blog.id), method: :post %>
+      <%= link_to  favorites_path(blog_id: @blog.id), method: :post, target: "_blank" do %>
+      <%= image_tag "heart.png" %><% end %>
     <% end %>
   <% end %>
 <br>
-<%= link_to 'ブログ一覧画面にもどる', blogs_path %>
+
+
+    

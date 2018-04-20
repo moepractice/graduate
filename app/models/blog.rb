@@ -9,4 +9,5 @@ class Blog < ApplicationRecord
   has_many :content_users, through: :comments, source: :user
   
   belongs_to :user
+  mount_uploader :image, ImageUploader
 end

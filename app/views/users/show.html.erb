@@ -1,18 +1,49 @@
-<h1><%= @user.name %>のページ</h1>
+<img class ="mypage" src="/assets/kakaeru.jpg" >
 
-<p>メールアドレス: <%= @user.email %></p>
+<h3 class ="mypage">Welcome!<%= @user.name %></h3>
+<%= link_to 'ブログ一覧画面へ', blogs_path %>
+<%= link_to '投稿する', new_blog_path %>
 
-<h2>お気に入り一覧</h2>
+<div class="wrapper">
+  <div class="column">
+    <div class="info" id="user">
+      <div class ="mypage">
+        <% if @user.image? %>
+　　      <%= image_tag @user.image.thumb.url %>
+　      <% else %>
+　　      <%= image_tag 'noimage.gif' %>
+　      <% end %><%= @user.name %>
+　　　  <p class ="mypage">名前: <%= @user.name %><br>メールアドレス: <%= @user.email %>
+　　　  </p>
+　　　</div>
+　　</div>
+  </div>
 
-<h3>内容</h3>
+  <div class="column">
+    <div class="info" id="favorite">
+      <div class ="mypage">
+        <% if @favorites.present? %>
+          <% @favorites.each do |favorite| %>
+            <div class="favorite_user">
+              <% blog = favorite.blog %>
+              <% if blog.user.image? %>
+                <%= image_tag blog.user.image.thumb.url %>
+              <% else %>
+                <%= image_tag 'noimage.gif' %>
+              <% end %>
+              <%= blog.user.name %>
+            </div>
+　          <br>
+            <p class ="mypage">タイトル：<%= blog.title %>
+              <br>
+              内容：<%= blog.content %>
+              <br>
+              <%= blog.created_at %>
+            </p>
+          <% end %>
+        <% end %>
+　    </div>
+    </div>
+  </div>
+</div>
 
-<% if @favorites.present? %>
-  <% @favorites.each do |favorite| %>
-    <p><%= favorite.blog.title %></p>
-    <p><%= favorite.blog.content %></p>
-  <% end %>
-<% end %>
-
-<%= link_to 'ブログ一覧画面にもどる', blogs_path %>
-<br>
-<%= link_to '新しくブログを投稿する', new_blog_path %>

@@ -1,5 +1,5 @@
 .main-header{
-    padding-bottom: 63%;
+    padding-bottom: 50%;
     width: 100%;
     background-size: cover;
     background-image: url(/assets/main.png);
@@ -15,6 +15,7 @@
 
 .thumbnail{
     padding-bottom: 30px;
+    border-radius: 20px;
 }
 
 li{
@@ -44,7 +45,6 @@ ul{
 }
 .container{
     margin-top:20px;
-    padding-bottom: 100px;
 }
 
 .footer{
@@ -83,9 +83,9 @@ div.container{
     border-style:none;
 }
 
-p.about{
+p{
     border-style:none;
-    text-align:left;
+    text-align:center;
     margin-bottom: 0;
 }
 
@@ -112,4 +112,34 @@ thumbnali.caption{
 
 .field_with_errors{
     margin:auto;
+}
+
+img {
+  width: 60px;
+  height: 60px;
+  border-radius: 30px;
+  object-fit: cover; /* この一行を追加するだけ！ */
+}
+
+h4.blog{
+    text-align: left;
+}
+
+h4.blog_content{
+    text-align: left;
+    margin-left: 60px;
+    margin-bottom: 10px;
+    background-color:rgba(233, 218, 218, 0.5);
+}
+
+p.blog_content{
+    text-align: left;
+    margin-left: 60px;
+    margin-bottom: 10px;
+}
+
+.thumbnail a>img, .thumbnail>img {
+    max-width: 100%;
+    height: auto;
+    display: inline;
 }

@@ -1,4 +1,5 @@
-<h1>Log in</h1>
+<body class ="login">
+<p class ="sign-up">Log in</p>
 <%= form_with(scope: :session, url: sessions_path, local: true) do |f| %>
 
   <%= f.label :email %>
@@ -6,6 +7,7 @@
 
   <%= f.label :password %>
   <%= f.password_field :password %>
-
-  <%= f.submit "Log in" %>
+<br>
+  <%= f.submit "ログイン" %>
 <% end %>
+</body>
