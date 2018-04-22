@@ -4,10 +4,16 @@
   <div class="column">
     <div class="info" id="user">
       <div class ="mypage">
-      <p class ="mypage">ユーザー: <%= @blog.user.name %><br>
-      タイトル: <%= @blog.title %><br>
-      内容: <%= @blog.content %><br>
-      <%= @blog.created_at %></p>
+        <% if @blog.user.image? %>
+          <%= image_tag @blog.user.image.thumb.url %>
+        <% else %>
+          <%= image_tag 'noimage.gif' %>
+        <% end %><%= @blog.user.name %>
+          <p class ="mypage"ユーザー: <%= @blog.user.name %><br>
+            タイトル: <%= @blog.title %><br>
+            内容: <%= @blog.content %><br>
+            <%= @blog.created_at %>
+          </p>
       </div>
     </div>
   </div>
@@ -17,7 +23,9 @@
       <h3 class ="mypage">
         <h1>コメント一覧</h1>
           <% @comments.each do |comment| %>
-            <p><%= comment.content %><br>
+            <p>
+               <%= comment.user.name %>
+               <%= comment.content %><br>
                <%= comment.created_at %></p>
           <% end %>
         <h2>コメントを追加</h2>

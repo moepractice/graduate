@@ -11,7 +11,7 @@
           <div class="thumbnail">
             <div class="caption">
               <% if blog.user.image? %>
-                <%= image_tag blog.user.image.thumb.url %><% end %>
+                <%= image_tag blog.user.image.thumb.url %>
               <% else %>
                 <%= image_tag 'noimage.gif' %>
               <% end %><%= blog.user.name %></h4>

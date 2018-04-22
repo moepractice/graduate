@@ -5,6 +5,8 @@ class CreateComments < ActiveRecord::Migration[5.1]
       t.references :blog, index: true, foreign_key: true
       t.integer :blog_id
       t.text :content
+      t.string :image
+      t.string :name
       t.timestamps
     end
   end
