@@ -7,7 +7,7 @@
         <% if @blog.user.image? %>
           <%= image_tag @blog.user.image.thumb.url %>
         <% else %>
-          <%= image_tag 'noimage.gif' %>
+          <%= image_tag 'no_image.png' %>
         <% end %><%= @blog.user.name %>
           <p class ="mypage"ユーザー: <%= @blog.user.name %><br>
             タイトル: <%= @blog.title %><br>
@@ -24,8 +24,8 @@
         <h1>コメント一覧</h1>
           <% @comments.each do |comment| %>
             <p>
-               <%= comment.user.name %>
-               <%= comment.content %><br>
+               ユーザー：<%= comment.blog.user.name %><br>
+               コメント：<%= comment.content %><br><br>
                <%= comment.created_at %></p>
           <% end %>
         <h2>コメントを追加</h2>

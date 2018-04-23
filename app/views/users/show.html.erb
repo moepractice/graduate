@@ -11,7 +11,7 @@
         <% if @user.image? %>
 　　      <%= image_tag @user.image.thumb.url %>
 　      <% else %>
-　　      <%= image_tag 'noimage.gif' %>
+　　      <%= image_tag 'no_image.png' %>
 　      <% end %><%= @user.name %>
 　　　  <p class ="mypage">名前: <%= @user.name %><br>メールアドレス: <%= @user.email %>
 　　　  </p>
@@ -29,7 +29,7 @@
               <% if blog.user.image? %>
                 <%= image_tag blog.user.image.thumb.url %>
               <% else %>
-                <%= image_tag 'noimage.gif' %>
+                <%= image_tag 'no_image.png' %>
               <% end %>
               <%= blog.user.name %>
             </div>

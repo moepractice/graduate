@@ -13,7 +13,7 @@
               <% if blog.user.image? %>
                 <%= image_tag blog.user.image.thumb.url %>
               <% else %>
-                <%= image_tag 'noimage.gif' %>
+                <%= image_tag 'no_image.png' %>
               <% end %><%= blog.user.name %></h4>
               <h4 class="blog_content">タイトル</h4>
               <p class="blog_content"><%= blog.title %></p>

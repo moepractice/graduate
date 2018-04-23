@@ -3,10 +3,15 @@ ja:
     models:
       blog: "ブログ"
       user: "ユーザー"
+      cotact: "お問い合わせ"
+      
     attributes:
       blog:
         title: "タイトル"
         content: "内容"
+        name: "名前"
+        email: "メールアドレス"
+
       user:
         title: "タイトル"
         name: "名前"
@@ -14,4 +19,9 @@ ja:
         current_password: "現在のパスワード"
         password: "パスワード"
         password_confirmation: "確認用パスワード"
-        remember_me: "ログインを記憶"s
+        remember_me: "ログインを記憶"
+      
+      contact:
+        Name: "名前"
+        Email: "メールアドレス"
+        Content: "お問い合わせ内容"
