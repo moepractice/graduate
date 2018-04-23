@@ -20,8 +20,13 @@ ja:
         password: "パスワード"
         password_confirmation: "確認用パスワード"
         remember_me: "ログインを記憶"
+        login: "ログイン"
       
       contact:
         Name: "名前"
         Email: "メールアドレス"
         Content: "お問い合わせ内容"
+        
+      session:
+        Email: "メールアドレス"
+        Password: "パスワード"

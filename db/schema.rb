@@ -25,10 +25,10 @@ ActiveRecord::Schema.define(version: 20180419031119) do
   end
 
   create_table "comments", force: :cascade do |t|
-    t.bigint "user_id"
+    t.integer "user_id"
     t.integer "blog_id"
     t.text "content"
-    t.string "image"
+    t.text "image"
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
