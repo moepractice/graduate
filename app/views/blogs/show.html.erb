@@ -47,25 +47,22 @@
 
 <p><%= notice %></p>
   <% if @blog.user_id == current_user.id %>
-    <%= link_to edit_blog_path(@blog) ,target: "_blank" do  %>
+    <%= link_to edit_blog_path(@blog) do  %>
     <%= image_tag "edit.png" %>
     <% end %>
-    <%= link_to blog_path(@blog), method: :delete, data: { confirm: '本当に削除していいですか？' }, target: "_blank" do  %>
+    <%= link_to blog_path(@blog), method: :delete, data: { confirm: '本当に削除していいですか？' } do  %>
     <%= image_tag "delete.png" %>
     <% end %>
-    <%= link_to new_blog_comment_path(@blog), target: "_blank" do  %>
+    <%= link_to new_blog_comment_path(@blog) do  %>
     <%= image_tag "comment.png" %>
     <% end %>
   <% else %>
     <% if @favorite.present? %>
-      <%= link_to favorite_path(blog_id: @blog.id), method: :delete, target: "_blank" do  %>
+      <%= link_to favorite_path(blog_id: @blog.id), method: :delete do  %>
       <%= image_tag "unlike.png" %><% end %>
     <% else %>
-      <%= link_to  favorites_path(blog_id: @blog.id), method: :post, target: "_blank" do %>
+      <%= link_to  favorites_path(blog_id: @blog.id), method: :post do %>
       <%= image_tag "heart.png" %><% end %>
     <% end %>
   <% end %>
 <br>
-
-
-    
