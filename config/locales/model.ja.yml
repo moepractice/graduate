@@ -11,6 +11,7 @@ ja:
         content: "内容"
         name: "名前"
         email: "メールアドレス"
+        submit: "送信"
 
       user:
         title: "タイトル"
@@ -21,12 +22,15 @@ ja:
         password_confirmation: "確認用パスワード"
         remember_me: "ログインを記憶"
         login: "ログイン"
+        submit: "送信"
       
       contact:
         Name: "名前"
         Email: "メールアドレス"
         Content: "お問い合わせ内容"
+        submit: "送信"
         
       session:
         Email: "メールアドレス"
         Password: "パスワード"
+        submit: "送信"

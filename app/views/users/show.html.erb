@@ -38,7 +38,7 @@
               <br>
               内容：<%= blog.content %>
               <br>
-              <%= blog.created_at %>
+              <%= blog.created_at.strftime("%Y-%m-%d %H:%M:%S") %>
             </p>
           <% end %>
         <% end %>

@@ -19,7 +19,7 @@
               <p class="blog_content"><%= blog.title %></p>
               <h4 class="blog_content">今日のつぶやき</h4>
               <p class="blog_content"><%= blog.content %></p>
-              <p><%= blog.created_at %></p><br>
+              <p><%= blog.created_at.strftime("%Y-%m-%d %H:%M:%S") %></p><br>
                 <% unless blog.user_id != current_user.id %>
                   <%= link_to blog_path(blog.id), target: "_blank" do %>
                     <%= image_tag "touch.png" %>
